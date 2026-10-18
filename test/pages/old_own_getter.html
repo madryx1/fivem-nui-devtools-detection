@@ -1,0 +1,7 @@
+<title>old_own_getter</title><script>
+const obj = Object.defineProperties(new Error(), {
+  message: { get() { fetch("/hit/" + document.title); return '' } },
+  toString: { value() { return '' } }
+})
+console.log(obj)
+</script>

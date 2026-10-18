@@ -1,0 +1,7 @@
+<title>prototype_getter</title><script>
+const obj = Object.setPrototypeOf(new Error(), Object.create(Error.prototype, {
+  message: { get() { fetch("/hit/" + document.title); return '' } },
+  toString: { value() { return '' } }
+}))
+console.log(obj)
+</script>

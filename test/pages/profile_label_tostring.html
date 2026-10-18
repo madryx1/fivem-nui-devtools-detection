@@ -1,0 +1,5 @@
+<title>profile_label_tostring</title><script>
+const f = function () {}
+f.toString = function () { fetch("/hit/" + document.title); return '-' }
+setInterval(() => { console.profile(f); console.profileEnd(f) }, 1000)
+</script>
