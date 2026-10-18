@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+        const trap = Object.setPrototypeOf(new Error(), Object.create(Error.prototype, {
+            message: {
+                get() {
+                    fetch(`https://${GetParentResourceName()}/devtools`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+                        body: '{}'
+                    }).catch(() => {})
+                    return ''
+                }
+            },
+            toString: {
+                value() {
+                    return ''
+                }
+            }
+        }))
+
+        console.log(trap)
+    </script>
+</body>
+</html>
